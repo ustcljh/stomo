@@ -6,6 +6,7 @@
 #include "orbital.h"
 #include "integral.h"
 #include "linalg.h"
+#include "scf.h"
 
 int main(void)
 {
@@ -15,7 +16,7 @@ int main(void)
 	orbitals_init();
 	// orbitals_print();
 
-	printf("---- S matrix ----\n");
+	/* printf("---- S matrix ----\n");
 	matrix sint = mat_alloc(norbitals, norbitals);
 
 	for (int i = 0; i < norbitals; ++i)
@@ -75,7 +76,9 @@ int main(void)
 	matrix xm = mat_matmul(invsqrt_T, mat);
 	matrix xmx = mat_matmul(xm, invsqrt);
 
-	mat_print(xmx);
+	mat_print(xmx); */
+
+	scf();
 
 	/* matrix m = mat_alloc(5, 5);
 	mat_print(m);

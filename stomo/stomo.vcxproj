@@ -135,6 +135,7 @@
     <ClCompile Include="linalg.c" />
     <ClCompile Include="matrix.c" />
     <ClCompile Include="orbital.c" />
+    <ClCompile Include="scf.c" />
     <ClCompile Include="stomo.c" />
     <ClCompile Include="structure.c" />
     <ClCompile Include="vector.c" />
@@ -147,6 +148,7 @@
     <ClInclude Include="linalg.h" />
     <ClInclude Include="matrix.h" />
     <ClInclude Include="orbital.h" />
+    <ClInclude Include="scf.h" />
     <ClInclude Include="structure.h" />
     <ClInclude Include="vector.h" />
   </ItemGroup>

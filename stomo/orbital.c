@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int norbitals;
+orbital* orbitals;
+
 void orbitals_init()
 {
 	if (strut.natoms == 0)

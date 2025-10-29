@@ -42,6 +42,9 @@
     <ClCompile Include="linalg.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="scf.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="matrix.h">
@@ -69,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="linalg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="scf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

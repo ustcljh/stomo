@@ -10,8 +10,8 @@ typedef struct
 	basis_orbital* orbital;
 } orbital;
 
-int norbitals;
-orbital* orbitals;
+extern int norbitals;
+extern orbital* orbitals;
 
 // Initialize the orbitals from structure and basis
 void orbitals_init();
