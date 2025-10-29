@@ -6,6 +6,8 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+#include <stdio.h>
+
 #define orb(id, gto) (orbitals[(id)].orbital->gtos[(gto)])
 #define atom(id) (orbitals[(id)].atom)
 
@@ -145,6 +147,10 @@ double integral_four_primitive(int c1, int p, int c2, int q, int c3, int r, int 
 
 	return orb(c1, p).coefficient * orb(c2, q).coefficient *
 		orb(c3, r).coefficient * orb(c4, s).coefficient *
+		integral_normalize_factor(orb(c1, p).exponent) *
+		integral_normalize_factor(orb(c2, q).exponent) *
+		integral_normalize_factor(orb(c3, r).exponent) *
+		integral_normalize_factor(orb(c4, s).exponent) *
 		(2 * pow(M_PI, 2.5) / ((a + b) * (c + d) * sqrt(a + b + c + d))) *
 		facpq * facrs *
 		integral_fboys0(((a + b) * (c + d) / (a + b + c + d)) * pow(pq, 2));

@@ -1,4 +1,4 @@
 #pragma once
 
 // Do the SCF
-void scf();
+void scf(int nocc);

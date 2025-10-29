@@ -78,7 +78,7 @@ int main(void)
 
 	mat_print(xmx); */
 
-	scf();
+	scf(1);
 
 	/* matrix m = mat_alloc(5, 5);
 	mat_print(m);
