@@ -79,7 +79,7 @@ int main(void)
 
 	mat_print(xmx); */
 
-	scf(1);
+	scf(5);
 
 	/* matrix m = mat_alloc(5, 5);
 	mat_print(m);

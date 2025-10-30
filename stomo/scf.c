@@ -10,7 +10,7 @@
 #include <math.h>
 #include <stdio.h>
 
-#define MAX_SCF_ITER 16
+#define MAX_SCF_ITER 32
 
 matrix mat_mul_3(matrix a, matrix b, matrix c)
 {
