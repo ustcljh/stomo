@@ -3,8 +3,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 int norbitals;
 orbital* orbitals;
+
+double s_normalize_factor(double exponent)
+{
+	return pow(2.0 * exponent / M_PI, 0.75);
+}
 
 void orbitals_init()
 {

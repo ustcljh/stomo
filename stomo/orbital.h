@@ -18,3 +18,6 @@ void orbitals_init();
 
 // Pretty print the orbitals
 void orbitals_print();
+
+// Normalization factors
+double s_normalize_factor(double exponent);

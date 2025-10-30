@@ -45,6 +45,9 @@
     <ClCompile Include="scf.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="plot.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="matrix.h">
@@ -75,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="scf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="plot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

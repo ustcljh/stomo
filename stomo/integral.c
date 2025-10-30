@@ -11,18 +11,13 @@
 #define orb(id, gto) (orbitals[(id)].orbital->gtos[(gto)])
 #define atom(id) (orbitals[(id)].atom)
 
-double integral_normalize_factor(double exponent)
-{
-	return pow(2.0 * exponent / M_PI, 0.75);
-}
-
 // Do the overlap integral on primitive gaussian (u.p, v.q)
 double integral_primitive_s(int u, int p, int v, int q)
 {
 	return orb(u, p).coefficient *
 		orb(v, q).coefficient *
-		integral_normalize_factor(orb(u, p).exponent) *
-		integral_normalize_factor(orb(v, q).exponent) *
+		s_normalize_factor(orb(u, p).exponent) *
+		s_normalize_factor(orb(v, q).exponent) *
 		pow(M_PI / (orb(u, p).exponent + orb(v, q).exponent), 1.5) *
 		exp(-((orb(u, p).exponent * orb(v, q).exponent) / (orb(u, p).exponent + orb(v, q).exponent)
 			* pow(vector_dist(atom(u)->atom_pos, atom(v)->atom_pos), 2)));
@@ -95,8 +90,8 @@ double integral_primitive_v(int u, int p, int v, int q, int c)
 	return -(cc->atom_number) *
 		orb(u, p).coefficient *
 		orb(v, q).coefficient *
-		integral_normalize_factor(a) *
-		integral_normalize_factor(b) *
+		s_normalize_factor(a) *
+		s_normalize_factor(b) *
 		(2 * M_PI / (a + b)) * exp(-a * b / (a + b) * pow(vector_dist(atom(u)->atom_pos, atom(v)->atom_pos), 2)) *
 		integral_fboys0((a + b) * pow(vector_dist(pp, cc->atom_pos), 2));
 }
@@ -147,10 +142,10 @@ double integral_four_primitive(int c1, int p, int c2, int q, int c3, int r, int 
 
 	return orb(c1, p).coefficient * orb(c2, q).coefficient *
 		orb(c3, r).coefficient * orb(c4, s).coefficient *
-		integral_normalize_factor(orb(c1, p).exponent) *
-		integral_normalize_factor(orb(c2, q).exponent) *
-		integral_normalize_factor(orb(c3, r).exponent) *
-		integral_normalize_factor(orb(c4, s).exponent) *
+		s_normalize_factor(orb(c1, p).exponent) *
+		s_normalize_factor(orb(c2, q).exponent) *
+		s_normalize_factor(orb(c3, r).exponent) *
+		s_normalize_factor(orb(c4, s).exponent) *
 		(2 * pow(M_PI, 2.5) / ((a + b) * (c + d) * sqrt(a + b + c + d))) *
 		facpq * facrs *
 		integral_fboys0(((a + b) * (c + d) / (a + b + c + d)) * pow(pq, 2));

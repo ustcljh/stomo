@@ -4,6 +4,7 @@
 #include "matrix.h"
 #include "linalg.h"
 #include "integral.h"
+#include "plot.h"
 
 #include <stdlib.h>
 #include <math.h>
@@ -172,6 +173,9 @@ void scf(int nocc)
 
 		E_old = Eelec;
 	}
+
+	plot_wfunc_gnuplot("plot_s.txt", C, 0);
+	plot_wfunc_gnuplot("plot_ss.txt", C, 1);
 
 	mat_free(S);
 	mat_free(X);

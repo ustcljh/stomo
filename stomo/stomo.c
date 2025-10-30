@@ -7,6 +7,7 @@
 #include "integral.h"
 #include "linalg.h"
 #include "scf.h"
+#include "plot.h"
 
 int main(void)
 {
