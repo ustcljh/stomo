@@ -108,13 +108,18 @@ void basis_load(const char* basis_filename)
 			{
 				int n_orbitals;
 
+				bool has_s = false, has_p = false;
+
 				if (strcmp(orbital_type, "S") == 0)
 				{
 					n_orbitals = 1;
+					has_s = true;
 				}
 				else if (strcmp(orbital_type, "SP") == 0)
 				{
-					n_orbitals = 2;
+					n_orbitals = 2; // but 3 p orbitals for x, y, z. We will do X at first and then copy the values to P.
+					has_s = true;
+					has_p = true;
 				}
 				else
 				{
@@ -139,6 +144,11 @@ void basis_load(const char* basis_filename)
 
 					// n_orbitals is just the orbital type
 					current_process_atom->orbitals[i].type = type;
+
+					// Set the initial ang. momentum to 0,0,0. P type orbitals will have 001, 010, 100 later.
+					current_process_atom->orbitals[i].amx = 0;
+					current_process_atom->orbitals[i].amy = 0;
+					current_process_atom->orbitals[i].amz = 0;
 
 					// Allocate the GTO terms
 					current_process_atom->orbitals[i].gtos = malloc(number_of_gto * sizeof(basis_gto));
@@ -178,6 +188,33 @@ void basis_load(const char* basis_filename)
 				}
 
 				current_process_atom->norbitals += n_orbitals;
+
+				// If we have P orbitals,
+				if (has_p)
+				{
+					int index = current_process_atom->norbitals - 1;
+
+					// Allocate the additional 2 orbitals
+					basis_orbital* add_yz_orbitals = realloc(current_process_atom->orbitals, (current_process_atom->norbitals + 2) * sizeof(basis_orbital));
+					if (add_yz_orbitals == NULL)
+					{
+						fprintf(stderr, "error: basis_load failed to allocate %d orbitals.\n", current_process_atom->norbitals);
+						abort();
+					}
+					current_process_atom->orbitals = add_yz_orbitals;
+
+					// Copy that from p_x
+					memcpy(&current_process_atom->orbitals[index + 1], &current_process_atom->orbitals[index], sizeof(basis_orbital)); // to p_y
+					memcpy(&current_process_atom->orbitals[index + 2], &current_process_atom->orbitals[index], sizeof(basis_orbital)); // to p_z
+
+					// Set the ang. momentum.
+					current_process_atom->orbitals[index].amx = 1;
+					current_process_atom->orbitals[index + 1].amy = 1;
+					current_process_atom->orbitals[index + 2].amz = 1;
+
+					// Add the two additional orbs
+					current_process_atom->norbitals += 2;
+				}
 			}
 			else
 			{

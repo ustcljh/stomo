@@ -15,7 +15,7 @@ int main(void)
 	// basis_print();
 	structure_load("D:\\dev\\stomo\\data\\struct.txt");
 	orbitals_init();
-	// orbitals_print();
+	orbitals_print();
 
 	/* printf("---- S matrix ----\n");
 	matrix sint = mat_alloc(norbitals, norbitals);

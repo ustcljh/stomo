@@ -16,6 +16,8 @@ typedef struct
 	int type;
 	int shell;
 
+	int amx, amy, amz;
+
 	int ngtos;
 	basis_gto* gtos;
 } basis_orbital;

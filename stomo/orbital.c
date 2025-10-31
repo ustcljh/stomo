@@ -60,7 +60,7 @@ void orbitals_print()
 {
 	for (int i = 0; i < norbitals; ++i)
 	{
-		printf("Orbital %d: Atom %d, Center %.8lf %.8lf %.8lf, Shell %d, Type %d, %d GTOs\n",
+		printf("Orbital %d: Atom %d, Center %.8lf %.8lf %.8lf, Shell %d, Type %d Ang moment = (%d,%d,%d), %d GTOs\n",
 			i,
 			orbitals[i].atom->atom_number,
 			orbitals[i].atom->atom_pos.x,
@@ -68,6 +68,9 @@ void orbitals_print()
 			orbitals[i].atom->atom_pos.z,
 			orbitals[i].orbital->shell,
 			orbitals[i].orbital->type,
+			orbitals[i].orbital->amx,
+			orbitals[i].orbital->amy,
+			orbitals[i].orbital->amz,
 			orbitals[i].orbital->ngtos);
 	}
 }
